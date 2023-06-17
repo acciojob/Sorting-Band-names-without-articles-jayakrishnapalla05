@@ -1,23 +1,22 @@
-//your code here
-function sortBandNames(names){
-	return names.sort((a,b) =>{
-		const removeArticles=(name) =>(name).replace(/^(a |an |the )/i, '');
-		const nameA=removeArticles(a.toLowerCase());
-		const nameB=removeArticles(b.toLowerCase());
-		return nameA.localeCompare(nameB);
-	});
-function displayBandNames(names) {
-  const ul = document.getElementById('band');
-  ul.innerHTML = '';
+let touristSpots = ['The Virupaksha Temple', 'Victoria Memorial', 'Tajmahal'];
+touristSpots.sort((a, b) => {
+    const articles = /^(The|A|An)\s+/i; 
 
-  // Sort the band names
-  const sortedNames = sortBandNames(names);
-
-  // Create and append list items to the HTML list
-  sortedNames.forEach((name) => {
-    const li = document.createElement('li');
-    li.textContent = name;
-    ul.appendChild(li);
+    const spotA = a.replace(articles, '');
+    const spotB = b.replace(articles, '');
+  
+    return spotA.localeCompare(spotB);
   });
-	
-}
+console.log(touristSpots);
+  
+ const ulElement = document.getElementById('band');
+
+
+ulElement.innerHTML = '';
+
+
+touristSpots.forEach((spot) => {
+  const liElement = document.createElement('li');
+  liElement.textContent = spot;
+  ulElement.appendChild(liElement);
+});
